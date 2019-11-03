@@ -1,0 +1,22 @@
+<form [formGroup]="formData">
+    <ion-item>
+        <ion-label>Imie</ion-label>
+        <ion-input type="text" formControlName="firstName"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label>Nazwisko</ion-label>
+          <ion-input type="text" formControlName="lastName"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label>Data urodzenia</ion-label>
+          <ion-datetime placeholder="Wybierz date" displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" type="text" formControlName="dateOfBirth"></ion-datetime>
+      </ion-item>
+      <ion-item>
+          <ion-label>Numer telefonu</ion-label>
+          <ion-input type="text" formControlName="phoneNumber"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label>Adres email</ion-label>
+          <ion-input type="email" formControlName="emailAddress"></ion-input>
+      </ion-item>
+</form>

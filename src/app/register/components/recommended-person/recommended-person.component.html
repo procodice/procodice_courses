@@ -1,0 +1,13 @@
+<form [formGroup]="personForm">
+  <ion-card [class.invalid]="!personForm.valid">
+      <ion-card-header (click)="collapseToggle()">
+        <ion-card-title>
+          <ion-icon name="trash" class="ion-float-right" (click)="delete()"></ion-icon>
+          {{ personForm.controls.firstName.value != "" ? personForm.controls.firstName.value + ' ' + personForm.controls.lastName.value : 'Osoba ' + (personId+1)}} 
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content [class.collapsed]="isCollapsed">
+          <personal-data [formData]="personForm"></personal-data>
+      </ion-card-content>
+    </ion-card>
+</form>

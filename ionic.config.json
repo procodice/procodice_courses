@@ -1,0 +1,8 @@
+{
+  "name": "Procodice.IonicDemo",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular"
+}
