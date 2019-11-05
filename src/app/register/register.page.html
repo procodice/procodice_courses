@@ -1,16 +1,16 @@
 <ion-content>
-  <form [formGroup]="registerForm" (ngSubmit)="postForm()">
+  <form [formGroup]="registerForm">
     <personal-data [formData]="registerForm.get('personalData')"></personal-data>
-    <ion-item>
-        <ion-label>Preferowane godziny kursu</ion-label>
+    <ion-item lines="none">
+        <ion-label position="floating">Preferowane godziny kursu</ion-label>
         <ion-select type="text" formControlName="preferredHours" multiple>
             <ion-select-option value="15-16">15:00-16:00</ion-select-option>
             <ion-select-option value="17-18">17:00-18:00</ion-select-option>
             <ion-select-option value="19-20">19:00-20:00</ion-select-option>
         </ion-select>
     </ion-item>
-    <ion-item>
-        <ion-label>Preferowany dzień kursu</ion-label>
+    <ion-item lines="none">
+        <ion-label position="floating">Preferowany dzień kursu</ion-label>
         <ion-select type="text" formControlName="preferredDays" multiple>
             <ion-select-option value="monday">Poniedziałek</ion-select-option>
             <ion-select-option value="tuesday">Wtorek</ion-select-option>
@@ -22,13 +22,19 @@
     <ion-item class="ion-margin-top">
       Osoby które polecasz na szkolenie:
       <ion-button color="success" class="ion-margin-start" (click)="addRecommendedPerson()" [disabled]="!registerForm.get('recommendedPeople').valid">
-        <ion-icon name="person-add">
-        </ion-icon>Dodaj
+        <ion-icon name="person-add"></ion-icon>
+        Dodaj
       </ion-button>
     </ion-item>
     <ng-container *ngFor="let item of registerForm.get('recommendedPeople').controls; let i = index">
       <recommended-person [personForm]="item" [personId]="i" (deleteEvent)="removeRecommendedPerson($event)" ></recommended-person>
     </ng-container>
-    <ion-button color="primary" type="submit" [disabled]="!registerForm.valid">Zapisz sie</ion-button>
   </form>
 </ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <ion-button expand="full" color="primary" (click)="postForm()" [disabled]="!registerForm.valid">
+            Zapisz sie
+        </ion-button>
+    </ion-toolbar>
+</ion-footer>

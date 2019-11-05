@@ -1,22 +1,67 @@
 <form [formGroup]="formData">
-    <ion-item>
-        <ion-label>Imie</ion-label>
+      <ion-item lines="none">
+        <ion-label position="floating">Imie</ion-label>
         <ion-input type="text" formControlName="firstName"></ion-input>
+        <div class="validation-errors">
+            <div class="error-message" *ngIf="formData.controls.firstName.invalid && (formData.controls.firstName.dirty || formData.controls.firstName.touched)">
+                <div *ngIf="formData.controls.firstName.errors.required">
+                    Imię jest wymagane
+                </div>
+            </div>
+        </div>
       </ion-item>
-      <ion-item>
-          <ion-label>Nazwisko</ion-label>
+
+      <ion-item lines="none">
+          <ion-label position="floating">Nazwisko</ion-label>
           <ion-input type="text" formControlName="lastName"></ion-input>
+          <div class="validation-errors">
+                <div class="error-message" *ngIf="formData.controls.lastName.invalid && (formData.controls.lastName.dirty || formData.controls.lastName.touched)">
+                    <div *ngIf="formData.controls.lastName.errors.required">
+                        Nazwisko jest wymagane
+                    </div>
+                </div>
+            </div>
       </ion-item>
-      <ion-item>
-          <ion-label>Data urodzenia</ion-label>
-          <ion-datetime placeholder="Wybierz date" displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" type="text" formControlName="dateOfBirth"></ion-datetime>
+      <ion-item lines="none">
+          <ion-label position="floating">Data urodzenia</ion-label>
+          <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" type="text" formControlName="dateOfBirth"></ion-datetime>
+          <div class="validation-errors">
+                <div class="error-message" *ngIf="formData.controls.dateOfBirth.invalid && (formData.controls.dateOfBirth.dirty || formData.controls.dateOfBirth.touched)">
+                    <div *ngIf="formData.controls.dateOfBirth.errors.required">
+                        Data urodzenia jest wymagana
+                    </div>
+                </div>
+            </div>
       </ion-item>
-      <ion-item>
-          <ion-label>Numer telefonu</ion-label>
+      <ion-item lines="none">
+          <ion-label position="floating">Numer telefonu</ion-label>
           <ion-input type="text" formControlName="phoneNumber"></ion-input>
+          <div class="validation-errors">
+                <div class="error-message" *ngIf="formData.controls.phoneNumber.invalid && (formData.controls.phoneNumber.dirty || formData.controls.phoneNumber.touched)">
+                    <div *ngIf="formData.controls.phoneNumber.errors.required">
+                        Numer telefonu jest wymagany
+                    </div>
+                    <div *ngIf="formData.controls.phoneNumber.errors.pattern">
+                        Numer telefonu musi się składać tylko z cyfr
+                    </div>
+                    <div *ngIf="formData.controls.phoneNumber.errors.minlength || formData.controls.phoneNumber.errors.maxlength">
+                        Numer telefonu musi mieć 9 znaków
+                    </div>
+                </div>
+            </div>
       </ion-item>
-      <ion-item>
-          <ion-label>Adres email</ion-label>
+      <ion-item lines="none">
+          <ion-label position="floating">Adres email</ion-label>
           <ion-input type="email" formControlName="emailAddress"></ion-input>
+          <div class="validation-errors">
+                <div class="error-message" *ngIf="formData.controls.emailAddress.invalid && (formData.controls.emailAddress.dirty || formData.controls.emailAddress.touched)">
+                    <div *ngIf="formData.controls.emailAddress.errors.required">
+                        Adres email jest wymagany
+                    </div>
+                    <div *ngIf="formData.controls.emailAddress.errors.pattern">
+                        Adres email jest niepoprawny
+                    </div>
+                </div>
+            </div>
       </ion-item>
 </form>
